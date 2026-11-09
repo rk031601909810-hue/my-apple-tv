@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>My TV — Cinema Home</title>
+<style>
+* { box-sizing:border-box; }
+html,body { margin:0; width:100%; height:100%; overflow:hidden; font-family:Arial,Helvetica,sans-serif; color:#fff; background:#080c1b; }
+body { background: radial-gradient(ellipse at 76% 12%, #52649f 0%, #25366f 27%, transparent 58%),radial-gradient(ellipse at 19% 92%, #632c76 0%,transparent 52%),linear-gradient(130deg,#111936 0%,#0d1433 48%,#070914 100%); }
+body:before { content:""; position:absolute;left:-18%;top:-100%;width:145%;height:155%;transform:rotate(-22deg);border-radius:50%;border:110px solid rgba(184,179,255,.055);pointer-events:none; }
+body:after { content:""; position:absolute;left:46%;top:-70%;width:95%;height:115%;transform:rotate(-30deg);border-radius:50%;border:100px solid rgba(156,206,255,.055);pointer-events:none; }
+#shell { position:relative;height:100%;padding:3.2vh 4.4vw 2vh;z-index:1; }
+.top { display:flex;justify-content:space-between;align-items:center;height:5.4vh; }
+.brand { letter-spacing:2px;font-size:17px;font-weight:bold;opacity:.91; }
+.topright { font-size:17px;opacity:.87;text-align:right; }
+.hero { height:34vh; display:flex;align-items:center;padding-left:1vw; }
+.eyebrow { font-size:13px;letter-spacing:3px;color:#c9d6ff;font-weight:bold;margin-bottom:1.7vh; }
+.hero h1 { font-size:clamp(38px,5.5vw,85px);letter-spacing:-2.5px;line-height:1.04;margin:0 0 1.8vh; font-weight:700;text-shadow:0 7px 35px rgba(0,0,0,.25); }
+.hero p { font-size:clamp(14px,1.55vw,23px);line-height:1.4;margin:0;color:#d8dcf1;max-width:50vw; }
+.hero .tag { display:inline-block;border:1px solid rgba(255,255,255,.25);border-radius:100px;background:rgba(255,255,255,.09);padding:7px 13px;font-size:12px;margin-top:2.2vh; }
+.sectionHead { font-size:17px;font-weight:bold;letter-spacing:.3px; margin:0 0 1.6vh 0; }
+.grid { display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:1.3vw;margin-bottom:2.7vh; }
+.app { position:relative;min-width:0; height:16.3vh;border:2px solid rgba(255,255,255,.07);border-radius:17px;background:rgba(255,255,255,.10);color:#fff;text-decoration:none;text-align:center; display:flex; flex-direction:column; justify-content:center; align-items:center; outline:none; overflow:hidden; box-shadow:0 12px 32px rgba(0,0,0,.15);transition:transform .13s ease,border-color .13s ease,box-shadow .13s ease; }
+.app.focus,.app:focus { transform:scale(1.055); border:3px solid #fff; box-shadow:0 0 0 4px rgba(255,255,255,.16),0 16px 35px rgba(0,0,0,.46); z-index:3; }
+.app .logo { font-size:clamp(23px,3.1vw,47px);font-weight:bold;letter-spacing:-1px;line-height:1;white-space:nowrap; }
+.app .small { margin-top:1vh;font-size:clamp(10px,1.05vw,15px);color:rgba(255,255,255,.93);font-weight:600; }
+.youtube { background:linear-gradient(140deg,#f92337,#b60018); }
+.youtube .play { background:white;color:#e7192c;border-radius:10px;padding:4px 15px;font-size:35px; }
+.bbc { background:linear-gradient(130deg,#1f86f3,#173a9f); }
+.itvx { background:linear-gradient(135deg,#13d9d3,#0272b6); }
+.channel4 { background:linear-gradient(135deg,#fa3af8,#7627cf); }
+.netflix { background:linear-gradient(120deg,#15151b,#050508); }
+.netflix .logo { color:#ef2630;font-size:clamp(34px,5vw,72px); }
+.prime { background:linear-gradient(125deg,#0c7dd2,#052551); }
+.disney { background:linear-gradient(135deg,#2953a6,#081739); }
+.disney .logo { font-family:Georgia,serif;font-style:italic;font-size:clamp(22px,2.7vw,41px); }
+.apple { background:linear-gradient(130deg,#454858,#10121b); }
+.plex { background:linear-gradient(120deg,#25262d,#131316); }
+.plex .logo { color:#ffb928; }
+.web { background:linear-gradient(125deg,#079def,#1c4bb2); }
+.home { background:linear-gradient(130deg,#717bb0,#403866); }
+.info { background:linear-gradient(125deg,#58617d,#29334c); }
+.footer { position:absolute;bottom:1.8vh;left:4.4vw;right:4.4vw;display:flex;justify-content:space-between;font-size:12px;color:#c8cbe0;opacity:.82; }
+@media(max-width:720px) { #shell{padding:3vh 3vw;} .hero{height:31vh;} .grid{gap:1vw;} .app{height:17.5vh;border-radius:10px;} .sectionHead{margin-bottom:1vh;} .app .logo{font-size:16px;} .app .small{font-size:9px;} .youtube .play{font-size:18px;padding:3px 7px;} }
+/* Cinema edition: compact, high-contrast and remote-friendly */
+html,body {background:#070911;}
+body {background:radial-gradient(ellipse at 85% 18%,rgba(33,86,155,.46),transparent 50%),radial-gradient(ellipse at 10% 92%,rgba(95,23,104,.32),transparent 57%),linear-gradient(135deg,#090d1b,#0c1328 65%,#080913);}
+body:before {border:0;left:auto;right:-9%;top:-45%;width:68vw;height:100vh;transform:rotate(-32deg);border-radius:44%;background:linear-gradient(90deg,transparent 10%,rgba(62,118,193,.10) 35%,rgba(147,190,255,.16) 51%,transparent 75%);filter:blur(4px)}
+body:after {border:0;left:auto;right:8%;top:-39%;width:30vw;height:92vh;transform:rotate(32deg);border-radius:44%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.06),transparent)}
+#shell{padding:2.8vh 4.4vw 2vh}
+.top{height:5vh}
+.brand{font-size:clamp(13px,1.25vw,20px);letter-spacing:2.8px}
+.topright{font-size:clamp(15px,1.4vw,21px);font-weight:600}
+.hero {height:29vh; padding-left:0;align-items:center}
+.eyebrow{font-size:clamp(11px,1vw,16px);margin-bottom:1.15vh;letter-spacing:2.5px}
+.hero h1{font-size:clamp(38px,4.4vw,70px);line-height:1.03;letter-spacing:-1.7px;margin-bottom:1.2vh;max-width:65vw}
+.hero p{font-size:clamp(14px,1.35vw,20px)}
+.hero .tag{margin-top:1.2vh;font-size:clamp(10px,.9vw,14px);padding:6px 12px}
+.sectionHead{font-size:clamp(14px,1.28vw,19px);margin-bottom:1.35vh;letter-spacing:.3px}
+.grid{gap:1.25vw;margin-bottom:2.9vh}
+.app {height:17vh;border-radius:18px;border:1px solid rgba(255,255,255,.17);box-shadow:0 14px 32px rgba(0,0,0,.30);transition:transform .15s ease,box-shadow .15s ease}
+.app.focus,.app:focus{transform:scale(1.065);border:3px solid #fff;box-shadow:0 0 0 4px rgba(255,255,255,.18),0 18px 42px rgba(0,0,0,.6)}
+.app .logo{font-size:clamp(22px,2.7vw,44px)}
+.app .small{font-size:clamp(11px,1.05vw,16px);margin-top:1.05vh}
+.netflix .logo{font-size:clamp(35px,4.5vw,68px)}
+.footer{font-size:clamp(10px,.85vw,13px);bottom:1.6vh;}
+@media(max-width:720px){.hero{height:29vh}.app{height:16vh}.hero h1{font-size:clamp(29px,4.6vw,46px)}.app .logo{font-size:16px}.app .small{font-size:9px}}
+</style>
+</head>
+<body>
+<div id="shell">
+ <div class="top"><div class="brand">MY TV <span style="opacity:.5">/</span> CINEMA</div><div class="topright" id="clock"> </div></div>
+ <div class="hero"><div><div class="eyebrow">YOUR ENTERTAINMENT</div><h1>Your world.<br>Your screen.</h1><p>A cinema-inspired home for your favourite entertainment.</p><div class="tag">Made for your Hisense remote</div></div></div>
+ <div class="sectionHead">Your favourites</div>
+ <div class="grid" id="apps">
+  <a class="app youtube focus" href="https://www.youtube.com/"><span class="logo play">&#9654;</span><span class="small">YouTube</span></a>
+  <a class="app bbc" href="https://www.bbc.co.uk/iplayer"><span class="logo">BBC</span><span class="small">iPlayer</span></a>
+  <a class="app itvx" href="https://www.itv.com/"><span class="logo">itv</span><span class="small">ITVX</span></a>
+  <a class="app channel4" href="https://www.channel4.com/"><span class="logo">4</span><span class="small">Channel 4</span></a>
+  <a class="app netflix" href="https://www.netflix.com/"><span class="logo">N</span><span class="small">Netflix</span></a>
+  <a class="app prime" href="https://www.amazon.co.uk/gp/video/storefront/"><span class="logo">prime</span><span class="small">Prime Video</span></a>
+ </div>
+ <div class="sectionHead">Explore</div>
+ <div class="grid">
+  <a class="app disney" href="https://www.disneyplus.com/"><span class="logo">Disney+</span><span class="small">Disney+</span></a>
+  <a class="app apple" href="https://tv.apple.com/"><span class="logo">tv+</span><span class="small">Apple TV</span></a>
+  <a class="app plex" href="https://app.plex.tv/"><span class="logo">PLEX</span><span class="small">Plex</span></a>
+  <a class="app web" href="https://www.google.com/"><span class="logo">&#9678;</span><span class="small">Web</span></a>
+  <a class="app home" href="https://www.bbc.co.uk/"><span class="logo">BBC</span><span class="small">BBC</span></a>
+  <a class="app info" href="#" id="help"><span class="logo">?</span><span class="small">About this page</span></a>
+ </div>
+ <div class="footer"><span>&#9664; &#9654; &#9650; &#9660; Navigate &nbsp;&middot;&nbsp; OK Open</span><span>Web shortcuts only &middot; Not a replacement for VIDAA apps</span></div>
+</div>
+<script>
+(function(){
+ var tiles=document.querySelectorAll('.app'); var selected=0; var COLS=6;
+ function focusTile(n){ if(n<0||n>=tiles.length)return;tiles[selected].classList.remove('focus');selected=n;tiles[selected].classList.add('focus');try{tiles[selected].focus();}catch(e){} }
+ function openTile(){if(tiles[selected].id==='help'){alert('This is a browser-based home screen. Streaming playback depends on VIDAA browser support. Your TV operating system has not been modified.');return;}window.location.href=tiles[selected].href;}
+ document.addEventListener('keydown',function(e){var k=e.key||'',c=e.keyCode||0,next=selected;
+ if(k==='ArrowLeft'||c===37)next=Math.max(0,selected-1);
+ else if(k==='ArrowRight'||c===39)next=Math.min(tiles.length-1,selected+1);
+ else if(k==='ArrowUp'||c===38)next=Math.max(0,selected-COLS);
+ else if(k==='ArrowDown'||c===40)next=Math.min(tiles.length-1,selected+COLS);
+ else if(k==='Enter'||c===13){e.preventDefault();openTile();return;}
+ else return;
+ e.preventDefault();focusTile(next);
+ },false);
+ for(var i=0;i<tiles.length;i++){(function(n){tiles[n].addEventListener('mouseenter',function(){focusTile(n);});tiles[n].addEventListener('focus',function(){focusTile(n);});})(i);}
+ document.getElementById('help').addEventListener('click',function(e){e.preventDefault();alert('This is a browser-based home screen. Your TV firmware is unchanged.');});
+ function time(){var d=new Date(); var hh=d.getHours(),mm=('0'+d.getMinutes()).slice(-2);var days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];var months=['January','February','March','April','May','June','July','August','September','October','November','December'];document.getElementById('clock').innerHTML=hh+':'+mm+'<div style="font-size:11px;opacity:.7;margin-top:4px">'+days[d.getDay()]+', '+d.getDate()+' '+months[d.getMonth()]+'</div>';}
+ time();setInterval(time,15000);
+})();
+</script>
+</body>
+</html>
